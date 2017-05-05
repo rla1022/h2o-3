@@ -1,5 +1,6 @@
 package water.rapids.prims.word2vec;
 
+import com.google.auto.service.AutoService;
 import hex.word2vec.Word2VecModel;
 import water.rapids.Env;
 import water.rapids.ast.AstPrimitive;
@@ -9,6 +10,7 @@ import water.rapids.vals.ValFrame;
 /**
  * Converts a word2vec model to a Frame
  */
+@AutoService(AstPrimitive.class)
 public class AstWord2VecToFrame extends AstPrimitive {
 
   @Override

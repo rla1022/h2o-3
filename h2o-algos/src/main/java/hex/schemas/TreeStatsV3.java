@@ -1,9 +1,12 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.tree.TreeStats;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.SchemaV3;
 
+@AutoService(Schema.class)
 public class TreeStatsV3 extends SchemaV3<TreeStats, TreeStatsV3> {
   // TODO: no CamelCase
   @API(help="minDepth")

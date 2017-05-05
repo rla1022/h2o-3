@@ -1,7 +1,10 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.tree.gbm.GBMModel;
+import water.api.Schema;
 
+@AutoService(Schema.class)
 public class GBMModelV3 extends SharedTreeModelV3<
         GBMModel,
         GBMModelV3,
@@ -10,6 +13,7 @@ public class GBMModelV3 extends SharedTreeModelV3<
         GBMModel.GBMOutput,
         GBMModelV3.GBMModelOutputV3> {
 
+  @AutoService(Schema.class)
   public static final class GBMModelOutputV3 extends SharedTreeModelV3.SharedTreeModelOutputV3<GBMModel.GBMOutput, GBMModelOutputV3> {}
 
   public GBMV3.GBMParametersV3 createParametersSchema() { return new GBMV3.GBMParametersV3(); }

@@ -1,8 +1,10 @@
 package water.api;
 
+import com.google.auto.service.AutoService;
 import hex.glrm.ModelMetricsGLRM;
 import water.api.schemas3.ModelMetricsBaseV3;
 
+@AutoService(Schema.class)
 public class ModelMetricsGLRMV99 extends ModelMetricsBaseV3<ModelMetricsGLRM, ModelMetricsGLRMV99> {
   @API(help="Sum of Squared Error (Numeric Cols)")
   public double numerr;

@@ -1,12 +1,15 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.glm.GLMModel;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.KeyV3;
 import water.api.schemas3.SchemaV3;
 
 /**
  */
+@AutoService(Schema.class)
 public class GLMRegularizationPathV3  extends SchemaV3<GLMModel.RegularizationPath,GLMRegularizationPathV3>{
   @API(help="source model", required = true, direction = API.Direction.INPUT)
   public KeyV3.ModelKeyV3 model;

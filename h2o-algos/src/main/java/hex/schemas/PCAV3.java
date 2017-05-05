@@ -1,13 +1,17 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.DataInfo;
 import hex.pca.PCA;
 import hex.pca.PCAModel.PCAParameters;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ModelParametersSchemaV3;
 
+@AutoService(Schema.class)
 public class PCAV3 extends ModelBuilderSchema<PCA,PCAV3,PCAV3.PCAParametersV3> {
 
+  @AutoService(Schema.class)
   public static final class PCAParametersV3 extends ModelParametersSchemaV3<PCAParameters, PCAParametersV3> {
     static public String[] fields = new String[] {
       "model_id",

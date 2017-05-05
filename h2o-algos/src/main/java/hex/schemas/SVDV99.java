@@ -1,13 +1,17 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.DataInfo;
 import hex.svd.SVD;
 import hex.svd.SVDModel.SVDParameters;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ModelParametersSchemaV3;
 
+@AutoService(Schema.class)
 public class SVDV99 extends ModelBuilderSchema<SVD,SVDV99,SVDV99.SVDParametersV99> {
 
+  @AutoService(Schema.class)
   public static final class SVDParametersV99 extends ModelParametersSchemaV3<SVDParameters, SVDParametersV99> {
     static public String[] fields = new String[] {
         "model_id",

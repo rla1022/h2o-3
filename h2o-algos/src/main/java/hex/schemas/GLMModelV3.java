@@ -1,9 +1,11 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.glm.GLMModel;
 import hex.glm.GLMModel.GLMOutput;
 import water.MemoryManager;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 
@@ -15,8 +17,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 //import water.util.DocGen.HTML;
 
+@AutoService(Schema.class)
 public class GLMModelV3 extends ModelSchemaV3<GLMModel, GLMModelV3, GLMModel.GLMParameters, GLMV3.GLMParametersV3, GLMOutput, GLMModelV3.GLMModelOutputV3> {
 
+  @AutoService(Schema.class)
   public static final class GLMModelOutputV3 extends ModelOutputSchemaV3<GLMOutput, GLMModelOutputV3> {
 
     @API(help="Table of Coefficients")

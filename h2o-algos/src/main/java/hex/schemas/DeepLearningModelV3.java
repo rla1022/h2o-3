@@ -1,5 +1,6 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.deeplearning.DeepLearningModel;
 import water.Key;
 import water.api.*;
@@ -8,8 +9,10 @@ import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 import water.api.schemas3.TwoDimTableV3;
 
+@AutoService(Schema.class)
 public class DeepLearningModelV3 extends ModelSchemaV3<DeepLearningModel, DeepLearningModelV3, DeepLearningModel.DeepLearningParameters, DeepLearningV3.DeepLearningParametersV3, DeepLearningModel.DeepLearningModelOutput, DeepLearningModelV3.DeepLearningModelOutputV3> {
 
+  @AutoService(Schema.class)
   public static final class DeepLearningModelOutputV3 extends ModelOutputSchemaV3<DeepLearningModel.DeepLearningModelOutput, DeepLearningModelOutputV3> {
     @API(help="Frame keys for weight matrices", level = API.Level.expert)
     KeyV3.FrameKeyV3[] weights;

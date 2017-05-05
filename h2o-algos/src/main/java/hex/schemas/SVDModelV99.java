@@ -1,12 +1,16 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.svd.SVDModel;
 import water.api.*;
 import water.api.schemas3.KeyV3;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 
+@AutoService(Schema.class)
 public class SVDModelV99 extends ModelSchemaV3<SVDModel, SVDModelV99, SVDModel.SVDParameters, SVDV99.SVDParametersV99, SVDModel.SVDOutput, SVDModelV99.SVDModelOutputV99> {
+
+  @AutoService(Schema.class)
   public static final class SVDModelOutputV99 extends ModelOutputSchemaV3<SVDModel.SVDOutput, SVDModelOutputV99> {
     // Output fields; input fields are in the parameters list
     @API(help = "Frame key of right singular vectors")

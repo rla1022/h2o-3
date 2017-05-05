@@ -1,11 +1,13 @@
 package water.test.util;
 
+import com.google.auto.service.AutoService;
 import hex.tree.gbm.GBMModel;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import water.Iced;
 import water.TestUtil;
+import water.api.Schema;
 import water.api.SchemaServer;
 import water.api.schemas3.FrameV3;
 import water.api.schemas3.SchemaV3;
@@ -29,6 +31,7 @@ public class PojoUtilsTest extends TestUtil {
     Frame.VecSpecifier[] column_array;
   }
 
+  @AutoService(Schema.class)
   static public class TestSchemaPojo extends SchemaV3<TestIcedPojo, TestSchemaPojo> {
     FrameV3.ColSpecifierV3 column;
     FrameV3.ColSpecifierV3[] column_array;

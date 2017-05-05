@@ -1,12 +1,16 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.example.ExampleModel;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 
+@AutoService(Schema.class)
 public class ExampleModelV3 extends ModelSchemaV3<ExampleModel, ExampleModelV3, ExampleModel.ExampleParameters, ExampleV3.ExampleParametersV3, ExampleModel.ExampleOutput, ExampleModelV3.ExampleModelOutputV3> {
 
+  @AutoService(Schema.class)
   public static final class ExampleModelOutputV3 extends ModelOutputSchemaV3<ExampleModel.ExampleOutput, ExampleModelOutputV3> {
     // Output fields
     @API(help="Iterations executed") public int iterations;

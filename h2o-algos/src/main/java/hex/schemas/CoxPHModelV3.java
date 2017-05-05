@@ -1,10 +1,13 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.coxph.CoxPHModel;
 import water.Key;
+import water.api.Schema;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 
+@AutoService(Schema.class)
 public class CoxPHModelV3 extends ModelSchemaV3<CoxPHModel,
                                               CoxPHModelV3,
                                               CoxPHModel.CoxPHParameters,
@@ -12,6 +15,7 @@ public class CoxPHModelV3 extends ModelSchemaV3<CoxPHModel,
                                               CoxPHModel.CoxPHOutput,
                                               CoxPHModelV3.CoxPHModelOutputV3> {
 
+  @AutoService(Schema.class)
   public static final class CoxPHModelOutputV3 extends ModelOutputSchemaV3<CoxPHModel.CoxPHOutput, CoxPHModelOutputV3> {
     //FIXME
     //add output fields

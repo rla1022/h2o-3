@@ -1,11 +1,16 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.coxph.CoxPH;
 import hex.coxph.CoxPHModel.CoxPHParameters;
 import water.H2O;
+import water.api.Schema;
 import water.api.schemas3.ModelParametersSchemaV3;
 
+@AutoService(Schema.class)
 public class CoxPHV3 extends ModelBuilderSchema<CoxPH,CoxPHV3,CoxPHV3.CoxPHParametersV3> {
+
+  @AutoService(Schema.class)
   public static final class CoxPHParametersV3 extends ModelParametersSchemaV3<CoxPHParameters, CoxPHParametersV3> {
     static public String[] own_fields = new String[] {
               "start_column",

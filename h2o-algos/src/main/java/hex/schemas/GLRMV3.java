@@ -1,5 +1,6 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.DataInfo;
 import hex.genmodel.algos.glrm.GlrmRegularizer;
 import hex.glrm.GLRM;
@@ -8,11 +9,14 @@ import hex.genmodel.algos.glrm.GlrmLoss;
 import hex.genmodel.algos.glrm.GlrmInitialization;
 import hex.svd.SVDModel.SVDParameters;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ModelParametersSchemaV3;
 import water.api.schemas3.KeyV3;
 
+@AutoService(Schema.class)
 public class GLRMV3 extends ModelBuilderSchema<GLRM, GLRMV3, GLRMV3.GLRMParametersV3> {
 
+  @AutoService(Schema.class)
   public static final class GLRMParametersV3 extends ModelParametersSchemaV3<GLRMParameters, GLRMParametersV3> {
     public static String[] fields = {
         "model_id",

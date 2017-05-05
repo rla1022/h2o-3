@@ -1,7 +1,10 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.tree.drf.DRFModel;
+import water.api.Schema;
 
+@AutoService(Schema.class)
 public class DRFModelV3 extends SharedTreeModelV3<DRFModel,
         DRFModelV3,
         DRFModel.DRFParameters,
@@ -9,6 +12,7 @@ public class DRFModelV3 extends SharedTreeModelV3<DRFModel,
         DRFModel.DRFOutput,
         DRFModelV3.DRFModelOutputV3> {
 
+  @AutoService(Schema.class)
   public static final class DRFModelOutputV3 extends SharedTreeModelV3.SharedTreeModelOutputV3<DRFModel.DRFOutput, DRFModelOutputV3> {}
 
   public DRFV3.DRFParametersV3 createParametersSchema() { return new DRFV3.DRFParametersV3(); }

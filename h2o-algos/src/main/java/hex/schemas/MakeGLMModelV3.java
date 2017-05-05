@@ -1,14 +1,17 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import water.Iced;
 import water.api.API;
 import water.api.API.Direction;
+import water.api.Schema;
 import water.api.schemas3.KeyV3;
 import water.api.schemas3.SchemaV3;
 
 /**
  * End point to update a model. Creates a modified copy of the original model. Can only change coefficient values.
  */
+@AutoService(Schema.class)
 public class MakeGLMModelV3 extends SchemaV3<Iced,MakeGLMModelV3> {
 
   @API(help="source model", required = true, direction = Direction.INPUT)

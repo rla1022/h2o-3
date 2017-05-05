@@ -1,14 +1,18 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.Distribution;
 import hex.deeplearning.DeepLearning;
 import hex.deeplearning.DeepLearningModel.DeepLearningParameters;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ModelParametersSchemaV3;
 import water.api.schemas3.KeyV3;
 
+@AutoService(Schema.class)
 public class DeepLearningV3 extends ModelBuilderSchema<DeepLearning,DeepLearningV3,DeepLearningV3.DeepLearningParametersV3> {
 
+  @AutoService(Schema.class)
   public static final class DeepLearningParametersV3 extends ModelParametersSchemaV3<DeepLearningParameters, DeepLearningParametersV3> {
 
     // Determines the order of parameters in the GUI

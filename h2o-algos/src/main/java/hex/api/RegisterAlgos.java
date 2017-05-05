@@ -1,10 +1,12 @@
 package hex.api;
 
-import water.H2O;
+import com.google.auto.service.AutoService;
 import hex.ModelBuilder;
+import water.H2O;
 import water.api.GridSearchHandler;
+import water.api.RegisterRestApi;
 
-@AutoService()
+@AutoService(RegisterRestApi.class)
 public class RegisterAlgos extends water.api.AbstractRegister {
   // Register the algorithms and their builder handlers:
   @Override public void register(String relativeResourcePath) {

@@ -1,10 +1,13 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import water.Iced;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.KeyV3;
 import water.api.schemas3.SchemaV3;
 
+@AutoService(Schema.class)
 public class DataInfoFrameV3 extends SchemaV3<Iced,DataInfoFrameV3> {
   @API(help="input frame")                                  public KeyV3.FrameKeyV3 frame;
   @API(help="interactions")                                 public String[] interactions;

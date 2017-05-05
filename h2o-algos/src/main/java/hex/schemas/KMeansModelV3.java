@@ -1,15 +1,19 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.kmeans.KMeans;
 import hex.kmeans.KMeansModel;
 import hex.util.ClusteringUtils;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 import water.api.schemas3.TwoDimTableV3;
 
+@AutoService(Schema.class)
 public class KMeansModelV3 extends ModelSchemaV3<KMeansModel, KMeansModelV3, KMeansModel.KMeansParameters, KMeansV3.KMeansParametersV3, KMeansModel.KMeansOutput, KMeansModelV3.KMeansModelOutputV3> {
 
+  @AutoService(Schema.class)
   public static final class KMeansModelOutputV3 extends ModelOutputSchemaV3<KMeansModel.KMeansOutput, KMeansModelOutputV3> {
     // Output fields; input fields are in the parameters list
     @API(help="Cluster Centers[k][features]")

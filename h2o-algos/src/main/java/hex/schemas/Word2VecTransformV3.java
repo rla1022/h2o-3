@@ -1,11 +1,14 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.word2vec.Word2VecModel;
 import water.Iced;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.KeyV3;
 import water.api.schemas3.SchemaV3;
 
+@AutoService(Schema.class)
 public class Word2VecTransformV3 extends SchemaV3<Iced, Word2VecTransformV3> {
   @API(help="Source word2vec Model", required = true, direction = API.Direction.INPUT)
   public KeyV3.ModelKeyV3 model;

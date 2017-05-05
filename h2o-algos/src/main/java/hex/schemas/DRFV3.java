@@ -1,12 +1,16 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.tree.drf.DRF;
 import hex.tree.drf.DRFModel.DRFParameters;
 import water.api.API;
+import water.api.Schema;
 
+@AutoService(Schema.class)
 public class DRFV3 extends SharedTreeV3<DRF,DRFV3, DRFV3.DRFParametersV3> {
 
-  public static final class DRFParametersV3 extends SharedTreeV3.SharedTreeParametersV3<DRFParameters, DRFParametersV3> {
+	@AutoService(Schema.class)
+	public static final class DRFParametersV3 extends SharedTreeV3.SharedTreeParametersV3<DRFParameters, DRFParametersV3> {
     static public String[] fields = new String[] {
 				"model_id",
 				"training_frame",

@@ -1,13 +1,17 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.kmeans.KMeans;
 import hex.kmeans.KMeansModel.KMeansParameters;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ClusteringModelParametersSchemaV3;
 import water.api.schemas3.KeyV3;
 
+@AutoService(Schema.class)
 public class KMeansV3 extends ClusteringModelBuilderSchema<KMeans,KMeansV3,KMeansV3.KMeansParametersV3> {
 
+  @AutoService(Schema.class)
   public static final class KMeansParametersV3 extends ClusteringModelParametersSchemaV3<KMeansParameters, KMeansParametersV3> {
     static public String[] fields = new String[] {
         "model_id",

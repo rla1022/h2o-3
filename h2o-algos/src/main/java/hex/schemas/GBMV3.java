@@ -1,13 +1,16 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.Distribution;
 import hex.tree.gbm.GBM;
 import hex.tree.gbm.GBMModel.GBMParameters;
 import water.api.API;
+import water.api.Schema;
 
-
+@AutoService(Schema.class)
 public class GBMV3 extends SharedTreeV3<GBM,GBMV3,GBMV3.GBMParametersV3> {
 
+  @AutoService(Schema.class)
   public static final class GBMParametersV3 extends SharedTreeV3.SharedTreeParametersV3<GBMParameters, GBMParametersV3> {
     static public String[] fields = new String[] {
       "model_id",

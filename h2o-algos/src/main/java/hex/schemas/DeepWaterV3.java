@@ -1,12 +1,16 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.deepwater.DeepWater;
 import hex.deepwater.DeepWaterParameters;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ModelParametersSchemaV3;
 
+@AutoService(Schema.class)
 public class DeepWaterV3 extends ModelBuilderSchema<DeepWater,DeepWaterV3,DeepWaterV3.DeepWaterParametersV3> {
 
+  @AutoService(Schema.class)
   public static final class DeepWaterParametersV3 extends ModelParametersSchemaV3<DeepWaterParameters, DeepWaterParametersV3> {
 
     // Determines the order of parameters in the GUI

@@ -1,12 +1,17 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.word2vec.Word2Vec;
 import hex.word2vec.Word2VecModel.Word2VecParameters;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.KeyV3;
 import water.api.schemas3.ModelParametersSchemaV3;
 
+@AutoService(Schema.class)
 public class Word2VecV3 extends ModelBuilderSchema<Word2Vec,Word2VecV3,Word2VecV3.Word2VecParametersV3> {
+
+  @AutoService(Schema.class)
   public static final class Word2VecParametersV3 extends ModelParametersSchemaV3<Word2VecParameters, Word2VecParametersV3> {
     public static String[] fields = new String[] {
             "model_id",

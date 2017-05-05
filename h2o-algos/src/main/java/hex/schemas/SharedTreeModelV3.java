@@ -1,11 +1,14 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.tree.SharedTreeModel;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 import water.api.schemas3.TwoDimTableV3;
 
+@AutoService(Schema.class)
 public class SharedTreeModelV3<M extends SharedTreeModel<M, P, O>,
                                         S extends SharedTreeModelV3<M, S, P, PS, O, OS>,
                                         P extends SharedTreeModel.SharedTreeParameters,
@@ -14,6 +17,7 @@ public class SharedTreeModelV3<M extends SharedTreeModel<M, P, O>,
                                         OS extends SharedTreeModelV3.SharedTreeModelOutputV3<O,OS>>
         extends ModelSchemaV3<M, S, P, PS, O, OS> {
 
+  @AutoService(Schema.class)
   public static class SharedTreeModelOutputV3<O extends SharedTreeModel.SharedTreeOutput, SO extends SharedTreeModelOutputV3<O,SO>> extends ModelOutputSchemaV3<O, SO> {
     @API(help="Variable Importances", direction=API.Direction.OUTPUT, level = API.Level.secondary)
     TwoDimTableV3 variable_importances;

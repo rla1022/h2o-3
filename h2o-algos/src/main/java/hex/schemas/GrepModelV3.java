@@ -1,5 +1,6 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.grep.GrepModel;
 import water.H2O;
 import water.api.*;
@@ -7,8 +8,10 @@ import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 import water.util.PojoUtils;
 
+@AutoService(Schema.class)
 public class GrepModelV3 extends ModelSchemaV3<GrepModel, GrepModelV3, GrepModel.GrepParameters, GrepV3.GrepParametersV3, GrepModel.GrepOutput, GrepModelV3.GrepModelOutputV3> {
 
+  @AutoService(Schema.class)
   public static final class GrepModelOutputV3 extends ModelOutputSchemaV3<GrepModel.GrepOutput, GrepModelOutputV3> {
     // Output fields
     // Assume small-data results: string matches only

@@ -1,5 +1,6 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import water.Iced;
 import water.api.API;
 import water.api.Schema;
@@ -9,6 +10,7 @@ import water.api.schemas3.KeyV3;
 /**
  * Created by tomas on 10/26/16.
  */
+@AutoService(Schema.class)
 public class GramV3 extends Schema<Iced,GramV3>{
   @API(help="source data", required = true, direction = API.Direction.INPUT)
   public KeyV3.FrameKeyV3 X;

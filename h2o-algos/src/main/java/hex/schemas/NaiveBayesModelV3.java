@@ -1,12 +1,17 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.naivebayes.NaiveBayesModel;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 import water.api.schemas3.TwoDimTableV3;
 
+@AutoService(Schema.class)
 public class NaiveBayesModelV3 extends ModelSchemaV3<NaiveBayesModel, NaiveBayesModelV3, NaiveBayesModel.NaiveBayesParameters, NaiveBayesV3.NaiveBayesParametersV3, NaiveBayesModel.NaiveBayesOutput, NaiveBayesModelV3.NaiveBayesModelOutputV3> {
+
+  @AutoService(Schema.class)
   public static final class NaiveBayesModelOutputV3 extends ModelOutputSchemaV3<NaiveBayesModel.NaiveBayesOutput, NaiveBayesModelOutputV3> {
     // Output fields; input fields are in the parameters list
     @API(help = "Categorical levels of the response")

@@ -1,13 +1,16 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.glrm.GLRMModel;
 import water.api.*;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 import water.api.schemas3.TwoDimTableV3;
 
+@AutoService(Schema.class)
 public class GLRMModelV3 extends ModelSchemaV3<GLRMModel, GLRMModelV3, GLRMModel.GLRMParameters, GLRMV3.GLRMParametersV3, GLRMModel.GLRMOutput, GLRMModelV3.GLRMModelOutputV3> {
 
+  @AutoService(Schema.class)
   public static final class GLRMModelOutputV3 extends ModelOutputSchemaV3<GLRMModel.GLRMOutput, GLRMModelOutputV3> {
     // Output fields; input fields are in the parameters list
     @API(help = "Number of iterations executed")

@@ -1,14 +1,18 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.tree.SharedTree;
 import hex.tree.SharedTreeModel.SharedTreeParameters;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.KeyV3.FrameKeyV3;
 import water.api.schemas3.ModelParametersSchemaV3;
 
 
+@AutoService(Schema.class)
 public class SharedTreeV3<B extends SharedTree, S extends SharedTreeV3<B,S,P>, P extends SharedTreeV3.SharedTreeParametersV3> extends ModelBuilderSchema<B,S,P> {
 
+  @AutoService(Schema.class)
   public static class SharedTreeParametersV3<P extends SharedTreeParameters, S extends SharedTreeParametersV3<P, S>> extends ModelParametersSchemaV3<P, S> {
   /*Imbalanced Classes*/
     /**

@@ -1,7 +1,9 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.StackedEnsembleModel;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.KeyV3;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
@@ -9,8 +11,10 @@ import water.api.schemas3.ModelSchemaV3;
 /**
  * Created by rpeck on 10/11/16.
  */
+@AutoService(Schema.class)
 public class StackedEnsembleModelV99 extends ModelSchemaV3<StackedEnsembleModel, StackedEnsembleModelV99, StackedEnsembleModel.StackedEnsembleParameters, StackedEnsembleV99.StackedEnsembleParametersV99, StackedEnsembleModel.StackedEnsembleOutput, StackedEnsembleModelV99.StackedEnsembleModelOutputV99> {
 
+  @AutoService(Schema.class)
   public static final class StackedEnsembleModelOutputV99 extends ModelOutputSchemaV3<StackedEnsembleModel.StackedEnsembleOutput, StackedEnsembleModelOutputV99> {
     @API(help="Model which combines the base_models into a stacked ensemble.", direction = API.Direction.OUTPUT)
     KeyV3.ModelKeyV3 metalearner;

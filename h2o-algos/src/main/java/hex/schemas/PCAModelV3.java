@@ -1,12 +1,16 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.pca.PCAModel;
 import water.api.*;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 import water.api.schemas3.TwoDimTableV3;
 
+@AutoService(Schema.class)
 public class PCAModelV3 extends ModelSchemaV3<PCAModel, PCAModelV3, PCAModel.PCAParameters, PCAV3.PCAParametersV3, PCAModel.PCAOutput, PCAModelV3.PCAModelOutputV3> {
+
+  @AutoService(Schema.class)
   public static final class PCAModelOutputV3 extends ModelOutputSchemaV3<PCAModel.PCAOutput, PCAModelOutputV3> {
     // Output fields; input fields are in the parameters list
     @API(help = "Standard deviation and importance of each principal component")

@@ -1,15 +1,20 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.ensemble.StackedEnsemble;
 import hex.StackedEnsembleModel;
 import water.api.API;
+import water.api.Schema;
 import water.api.schemas3.KeyV3;
 import water.api.schemas3.ModelParametersSchemaV3;
 
 /**
  * Created by rpeck on 10/11/16.
  */
+@AutoService(Schema.class)
 public class StackedEnsembleV99 extends ModelBuilderSchema<StackedEnsemble,StackedEnsembleV99,StackedEnsembleV99.StackedEnsembleParametersV99> {
+
+  @AutoService(Schema.class)
   public static final class StackedEnsembleParametersV99 extends ModelParametersSchemaV3<StackedEnsembleModel.StackedEnsembleParameters, StackedEnsembleParametersV99> {
     static public String[] fields = new String[]{
       "model_id",

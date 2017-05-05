@@ -1,5 +1,6 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.deeplearning.DeepLearningModel.DeepLearningParameters;
 import hex.glm.GLM;
 import hex.glm.GLMModel.GLMParameters;
@@ -7,14 +8,17 @@ import hex.glm.GLMModel.GLMParameters.Solver;
 import water.api.API;
 import water.api.API.Direction;
 import water.api.API.Level;
+import water.api.Schema;
 import water.api.schemas3.KeyV3.FrameKeyV3;
 import water.api.schemas3.ModelParametersSchemaV3;
 
 /**
  * Created by tomasnykodym on 8/29/14.
  */
+@AutoService(Schema.class)
 public class GLMV3 extends ModelBuilderSchema<GLM,GLMV3,GLMV3.GLMParametersV3> {
 
+  @AutoService(Schema.class)
   public static final class GLMParametersV3 extends ModelParametersSchemaV3<GLMParameters, GLMParametersV3> {
     static public String[] fields = new String[]{
             "model_id",

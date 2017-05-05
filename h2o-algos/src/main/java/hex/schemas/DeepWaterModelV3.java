@@ -1,14 +1,18 @@
 package hex.schemas;
 
+import com.google.auto.service.AutoService;
 import hex.deepwater.DeepWaterModel;
 import hex.deepwater.DeepWaterModelOutput;
 import hex.deepwater.DeepWaterParameters;
 import water.Key;
+import water.api.Schema;
 import water.api.schemas3.ModelOutputSchemaV3;
 import water.api.schemas3.ModelSchemaV3;
 
+@AutoService(Schema.class)
 public class DeepWaterModelV3 extends ModelSchemaV3<DeepWaterModel, DeepWaterModelV3, DeepWaterParameters, DeepWaterV3.DeepWaterParametersV3, DeepWaterModelOutput, DeepWaterModelV3.DeepWaterModelOutputV3> {
 
+  @AutoService(Schema.class)
   public static final class DeepWaterModelOutputV3 extends ModelOutputSchemaV3<DeepWaterModelOutput, DeepWaterModelOutputV3> {
   }
 
