@@ -12,6 +12,8 @@ dependencies {
   // Test dependencies only
   testCompile "junit:junit:${junitVersion}"
   testCompile project(path: ":h2o-core", configuration: "testArchives")
+  compileOnly group: 'com.google.auto.service', name: 'auto-service', version: '1.0-rc3'
+  apt group: 'com.google.auto.service', name: 'auto-service', version: '1.0-rc3'
 }
 
 apply from: "${rootDir}/gradle/dataCheck.gradle"

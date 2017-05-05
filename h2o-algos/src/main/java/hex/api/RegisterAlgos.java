@@ -4,6 +4,7 @@ import water.H2O;
 import hex.ModelBuilder;
 import water.api.GridSearchHandler;
 
+@AutoService()
 public class RegisterAlgos extends water.api.AbstractRegister {
   // Register the algorithms and their builder handlers:
   @Override public void register(String relativeResourcePath) {
