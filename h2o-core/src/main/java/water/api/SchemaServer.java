@@ -279,7 +279,8 @@ public class SchemaServer {
 
     if (clz == null)
       throw new H2ONotFoundArgumentException("Failed to find schema for version: " + version + " and type: " + type,
-          "Failed to find schema for version: " + version + " and type: " + type);
+          "Failed to find schema for version: " + version + " and type: " + type + "\n" +
+          "Did you forget to add an entry into your META-INF/services/water.api.Schema?");
     return Schema.newInstance(clz);
   }
 
