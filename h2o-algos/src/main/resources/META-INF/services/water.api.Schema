@@ -41,10 +41,15 @@ hex.schemas.GrepModelV3
 hex.schemas.GrepModelV3$GrepModelOutputV3
 hex.schemas.GrepV3
 hex.schemas.GrepV3$GrepParametersV3
+hex.schemas.KLimeV3
+hex.schemas.KLimeV3$KLimeParametersV3
+hex.schemas.KLimeModelV3
+hex.schemas.KLimeModelV3$KLimeModelOutputV3
 hex.schemas.KMeansModelV3
 hex.schemas.KMeansModelV3$KMeansModelOutputV3
 hex.schemas.KMeansV3
 hex.schemas.KMeansV3$KMeansParametersV3
+hex.schemas.LeaveOneCovarOutV3
 hex.schemas.MakeGLMModelV3
 hex.schemas.NaiveBayesModelV3
 hex.schemas.NaiveBayesModelV3$NaiveBayesModelOutputV3
