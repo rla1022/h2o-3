@@ -29,4 +29,9 @@ public class RegisterRestApi extends AbstractRegister {
             "GET /99/Leaderboards/{project}", LeaderboardsHandler.class, "fetch",
             "Return the AutoML leaderboard for the given project.");
   }
+
+  @Override
+  public String getName() {
+    return "AutoML";
+  }
 }

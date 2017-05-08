@@ -32,4 +32,7 @@ public interface RegisterRestApi {
    * @param context
    */
   void registerSchemas(RestApiContext context);
+
+  /** Provide name of the REST API extension. */
+  String getName();
 }

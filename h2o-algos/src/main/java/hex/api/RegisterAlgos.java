@@ -71,4 +71,9 @@ public class RegisterAlgos extends water.api.AbstractRegister {
     H2O.register("POST /3/LeaveOneCovarOut", LeaveOneCovarOutHandler.class, "getLoco","loco",
             "Conduct Leave One Covariate Out (LOCO) Analysis");
   }
+
+  @Override
+  public String getName() {
+    return "Algos";
+  }
 }
