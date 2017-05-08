@@ -432,4 +432,9 @@ public class RegisterV3Api extends AbstractRegister {
         "GET /99/Rapids/help", RapidsHandler.class, "genHelp",
         "Produce help for Rapids AstRoot language.");
   }
+
+  @Override
+  public String getName() {
+    return "Core V3";
+  }
 }

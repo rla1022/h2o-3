@@ -16,4 +16,9 @@ public abstract class AbstractRegister implements RegisterRestApi {
       context.registerSchema(schema);
     }
   }
+
+  @Override
+  public String getName() {
+    return this.getClass().getName();
+  }
 }

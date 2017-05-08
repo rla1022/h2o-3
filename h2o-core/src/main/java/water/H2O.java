@@ -788,8 +788,10 @@ final public class H2O {
     long before = System.currentTimeMillis();
     ServiceLoader<AbstractH2OExtension> extensionsLoader = ServiceLoader.load(AbstractH2OExtension.class);
     for (AbstractH2OExtension ext : extensionsLoader) {
-      ext.init();
-      addExtension(ext);
+      if (ext.isEnabled()) {
+        ext.init();
+        addExtension(ext);
+      }
     }
     extensionsRegistered = true;
 
@@ -825,19 +827,24 @@ final public class H2O {
     }
 
     // Log extension registrations here so the message is grouped in the right spot.
+    List<String> registeredH2OExts = new ArrayList<>();
     for (AbstractH2OExtension e : H2O.getExtensions()) {
       e.printInitialized();
+      registeredH2OExts.add(e.getExtensionName());
     }
     Log.info("Registered " + H2O.getExtensions().size() + " extensions in: " + registerExtensionsMillis + "ms");
+    Log.info("Registered H2O extensions: " + Arrays.toString(registeredH2OExts.toArray()));
 
     long before = System.currentTimeMillis();
     RequestServer.DummyRestApiContext dummyRestApiContext = new RequestServer.DummyRestApiContext();
-    ServiceLoader<RegisterRestApi> restApiExtensionLoander = ServiceLoader.load(RegisterRestApi.class);
-    for (RegisterRestApi r : restApiExtensionLoander) {
+    ServiceLoader<RegisterRestApi> restApiExtensionLoader = ServiceLoader.load(RegisterRestApi.class);
+    List<String> registeredRestApiExts = new ArrayList<>();
+    for (RegisterRestApi r : restApiExtensionLoader) {
       try {
         r.register(relativeResourcePath);
         r.registerEndPoints(dummyRestApiContext);
         r.registerSchemas(dummyRestApiContext);
+        registeredRestApiExts.add(r.getName());
       } catch (Exception e) {
         Log.info("Cannot register extension: " + r + ". Skipping it...");
       }
@@ -847,6 +854,7 @@ final public class H2O {
 
     long registerApisMillis = System.currentTimeMillis() - before;
     Log.info("Registered: " + RequestServer.numRoutes() + " REST APIs in: " + registerApisMillis + "ms");
+    Log.info("Registered REST API extensions: " + Arrays.toString(registeredRestApiExts.toArray()));
 
     // Register all schemas
     SchemaServer.registerAllSchemasIfNecessary(dummyRestApiContext.getAllSchemas());
