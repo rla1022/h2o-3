@@ -10,7 +10,7 @@ package water.api;
  *   - register Handlers to expose a new REST API endpoint (e.g., /3/ModelBuilder/XGBoost/)
  *   - register Schemas to provide a new definition of REST API input/output
  */
-public interface RegisterRestApi {
+public interface RestApiExtension {
 
   /**
    * TODO: would be better to pass Jetty object to register `jetty.register(new ApiHandler())

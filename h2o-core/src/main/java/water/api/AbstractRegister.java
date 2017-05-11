@@ -2,7 +2,7 @@ package water.api;
 
 import java.util.ServiceLoader;
 
-public abstract class AbstractRegister implements RegisterRestApi {
+public abstract class AbstractRegister implements RestApiExtension {
 
   @Override
   public void registerEndPoints(RestApiContext context) {

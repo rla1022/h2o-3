@@ -7,17 +7,10 @@ import jsr166y.ForkJoinPool;
 import jsr166y.ForkJoinWorkerThread;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.PropertyConfigurator;
-import org.reflections.Reflections;
+
 import water.UDPRebooted.ShutdownTsk;
-import water.api.AbstractRegister;
-import water.api.Handler;
-import water.api.HandlerFactory;
-import water.api.RegisterRestApi;
+import water.api.RestApiExtension;
 import water.api.RequestServer;
-import water.api.RestApiContext;
-import water.api.RestApiHandler;
-import water.api.Route;
-import water.api.Schema;
 import water.api.SchemaServer;
 import water.exceptions.H2OFailException;
 import water.exceptions.H2OIllegalArgumentException;
@@ -32,7 +25,6 @@ import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.net.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -837,9 +829,9 @@ final public class H2O {
 
     long before = System.currentTimeMillis();
     RequestServer.DummyRestApiContext dummyRestApiContext = new RequestServer.DummyRestApiContext();
-    ServiceLoader<RegisterRestApi> restApiExtensionLoader = ServiceLoader.load(RegisterRestApi.class);
+    ServiceLoader<RestApiExtension> restApiExtensionLoader = ServiceLoader.load(RestApiExtension.class);
     List<String> registeredRestApiExts = new ArrayList<>();
-    for (RegisterRestApi r : restApiExtensionLoader) {
+    for (RestApiExtension r : restApiExtensionLoader) {
       try {
         r.register(relativeResourcePath);
         r.registerEndPoints(dummyRestApiContext);
