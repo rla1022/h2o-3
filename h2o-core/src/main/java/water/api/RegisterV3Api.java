@@ -431,6 +431,18 @@ public class RegisterV3Api extends AbstractRegister {
     RequestServer.registerEndpoint("rapids_help",
         "GET /99/Rapids/help", RapidsHandler.class, "genHelp",
         "Produce help for Rapids AstRoot language.");
+
+    RequestServer.registerEndpoint("list_all_capabilities",
+            "GET /3/Capabilities", CapabilitiesHandler.class, "listAll",
+            "List of all registered capabilities");
+
+    RequestServer.registerEndpoint("list_core_capabilities",
+            "GET /3/Capabilities/Core", CapabilitiesHandler.class, "listCore",
+            "List registered core capabilities");
+
+    RequestServer.registerEndpoint("list_rest_capabilities",
+            "GET /3/Capabilities/API", CapabilitiesHandler.class, "listRest",
+            "List of all registered Rest API capabilities");
   }
 
   @Override

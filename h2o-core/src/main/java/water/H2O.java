@@ -175,7 +175,7 @@ final public class H2O {
 
     System.out.print(s);
 
-    for (AbstractH2OExtension e : H2O.getExtensions()) {
+    for (AbstractH2OExtension e : H2O.getCoreExtensions()) {
       e.printHelp();
     }
   }
@@ -407,7 +407,7 @@ final public class H2O {
    * Dead stupid argument parser.
    */
   private static void parseArguments(String[] args) {
-    for (AbstractH2OExtension e : H2O.getExtensions()) {
+    for (AbstractH2OExtension e : H2O.getCoreExtensions()) {
       args = e.parseArguments(args);
     }
 
@@ -612,7 +612,7 @@ final public class H2O {
     }
 
     // Validate extension arguments
-    for (AbstractH2OExtension e : H2O.getExtensions()) {
+    for (AbstractH2OExtension e : H2O.getCoreExtensions()) {
       e.validateArguments();
     }
   }
@@ -770,7 +770,7 @@ final public class H2O {
    * Register H2O extensions.
    * <p/>
    * Use SPI to find all classes that extends water.AbstractH2OExtension
-   * and call H2O.addExtension() for each.
+   * and call H2O.addCoreExtension() for each.
    */
   public static void registerExtensions() {
     if (extensionsRegistered) {
@@ -782,7 +782,7 @@ final public class H2O {
     for (AbstractH2OExtension ext : extensionsLoader) {
       if (ext.isEnabled()) {
         ext.init();
-        addExtension(ext);
+        addCoreExtension(ext);
       }
     }
     extensionsRegistered = true;
@@ -790,14 +790,23 @@ final public class H2O {
     registerExtensionsMillis = System.currentTimeMillis() - before;
   }
 
-  private static ArrayList<AbstractH2OExtension> extensions = new ArrayList<>();
+  private static ArrayList<AbstractH2OExtension> coreExtensions = new ArrayList<>();
 
-  public static void addExtension(AbstractH2OExtension e) {
-    extensions.add(e);
+  public static void addCoreExtension(AbstractH2OExtension e) {
+    coreExtensions.add(e);
   }
 
-  public static ArrayList<AbstractH2OExtension> getExtensions() {
-    return extensions;
+  private static ArrayList<RestApiExtension> restApiExtensions = new ArrayList<>();
+
+  public static void addRestAPIExtension(RestApiExtension e){
+    restApiExtensions.add(e);
+  }
+  public static ArrayList<AbstractH2OExtension> getCoreExtensions() {
+    return coreExtensions;
+  }
+
+  public static ArrayList<RestApiExtension> getRestApiExtensions(){
+    return restApiExtensions;
   }
 
   //-------------------------------------------------------------------------------------------------------------------
@@ -820,12 +829,12 @@ final public class H2O {
 
     // Log extension registrations here so the message is grouped in the right spot.
     List<String> registeredH2OExts = new ArrayList<>();
-    for (AbstractH2OExtension e : H2O.getExtensions()) {
+    for (AbstractH2OExtension e : H2O.getCoreExtensions()) {
       e.printInitialized();
       registeredH2OExts.add(e.getExtensionName());
     }
-    Log.info("Registered " + H2O.getExtensions().size() + " extensions in: " + registerExtensionsMillis + "ms");
-    Log.info("Registered H2O extensions: " + Arrays.toString(registeredH2OExts.toArray()));
+    Log.info("Registered " + H2O.getCoreExtensions().size() + " core extensions in: " + registerExtensionsMillis + "ms");
+    Log.info("Registered H2O core extensions: " + Arrays.toString(registeredH2OExts.toArray()));
 
     long before = System.currentTimeMillis();
     RequestServer.DummyRestApiContext dummyRestApiContext = new RequestServer.DummyRestApiContext();
@@ -837,6 +846,7 @@ final public class H2O {
         r.registerEndPoints(dummyRestApiContext);
         r.registerSchemas(dummyRestApiContext);
         registeredRestApiExts.add(r.getName());
+        H2O.addRestAPIExtension(r);
       } catch (Exception e) {
         Log.info("Cannot register extension: " + r + ". Skipping it...");
       }
@@ -1414,7 +1424,7 @@ final public class H2O {
       Log.warn("");
     }
 
-    for (AbstractH2OExtension e : H2O.getExtensions()) {
+    for (AbstractH2OExtension e : H2O.getCoreExtensions()) {
       String n = e.getExtensionName() + " ";
       AbstractBuildVersion abv = e.getBuildVersion();
       Log.info(n + "Build git branch: ", abv.branchName());
@@ -1914,9 +1924,9 @@ final public class H2O {
     long time5 = System.currentTimeMillis();
     startLocalNode();
 
-    // Allow extensions to perform initialization that requires the network.
+    // Allow core extensions to perform initialization that requires the network.
     long time6 = System.currentTimeMillis();
-    for (AbstractH2OExtension ext: extensions) {
+    for (AbstractH2OExtension ext: coreExtensions) {
       ext.onLocalNodeStarted();
     }
 
